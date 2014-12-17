@@ -19,6 +19,12 @@ Usage example:
 	//performing queries
 	$database->list_tables();
 	$database->list_columns('users');
-	$database->query(Door\RDB\Database::SELECT, "select * from roles")->execute()->as_array();
-	$database->select("id,name,email")->from('users')->where('registered',">","2014-01-01")->execute()->as_array();
+	$database->query(Door\RDB\Database::SELECT, "select * from roles")
+		->execute()
+		->as_array();
+	$database->select("id,name,email")
+		->from('users')
+		->where('registered',">","2014-01-01")
+		->execute()
+		->as_array();
 	$database->delete('users')->where('id', '=', 25)->execute();
