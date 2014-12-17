@@ -21,7 +21,7 @@ use Door\RDB\Database\Expression;
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    http://kohanaphp.com/license
  */
-abstract class Database {
+abstract class Database extends Database\Util {
 
 	// Query types
 	const SELECT =  1;
