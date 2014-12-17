@@ -1,5 +1,5 @@
 {
-	"name"	   :"door/door",
+	"name"	   :"door/rdb",
 	"type"	   :"library",
 	"description":"Relations database connector for Door framework",
 	"license" : "MIT",
