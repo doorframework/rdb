@@ -239,12 +239,12 @@ class MySQL extends Database {
 		if (is_string($like))
 		{
 			// Search for table names
-			$result = $this->query(Database::SELECT, 'SHOW TABLES LIKE '.$this->quote($like), FALSE);
+			$result = $this->perform(Database::SELECT, 'SHOW TABLES LIKE '.$this->quote($like), FALSE);
 		}
 		else
 		{
 			// Find all table names
-			$result = $this->query(Database::SELECT, 'SHOW TABLES', FALSE);
+			$result = $this->perform(Database::SELECT, 'SHOW TABLES', FALSE);
 		}
 
 		$tables = array();
@@ -264,12 +264,12 @@ class MySQL extends Database {
 		if (is_string($like))
 		{
 			// Search for column names
-			$result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM '.$table.' LIKE '.$this->quote($like), FALSE);
+			$result = $this->perform(Database::SELECT, 'SHOW FULL COLUMNS FROM '.$table.' LIKE '.$this->quote($like), FALSE);
 		}
 		else
 		{
 			// Find all column names
-			$result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM '.$table, FALSE);
+			$result = $this->perform(Database::SELECT, 'SHOW FULL COLUMNS FROM '.$table, FALSE);
 		}
 
 		$count = 0;

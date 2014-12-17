@@ -16,6 +16,26 @@ namespace Door\RDB\Database;
 abstract class Util {
 	
 	/**
+	 * Perform an SQL query of the given type.
+	 *
+	 *     // Make a SELECT query and use objects for results
+	 *     $db->query(Database::SELECT, 'SELECT * FROM groups', TRUE);
+	 *
+	 *     // Make a SELECT query and use "Model_User" for the results
+	 *     $db->query(Database::SELECT, 'SELECT * FROM users LIMIT 1', 'Model_User');
+	 *
+	 * @param   integer  $type       Database::SELECT, Database::INSERT, etc
+	 * @param   string   $sql        SQL query
+	 * @param   mixed    $as_object  result object class string, TRUE for stdClass, FALSE for assoc array
+	 * @param   array    $params     object construct parameters for result class
+	 * @return  object   Database_Result for SELECT queries
+	 * @return  array    list (insert id, row count) for INSERT queries
+	 * @return  integer  number of affected rows for all other queries
+	 */
+	abstract public function perform($type, $sql, $as_object = FALSE, array $params = NULL);	
+	
+	
+	/**
 	 * Extracts the text between parentheses, if any.
 	 *
 	 *     // Returns: array('CHAR', '6')
@@ -369,7 +389,7 @@ abstract class Util {
 		// Quote the table name
 		$table = $this->quote_table($table);
 
-		return $this->query(Database::SELECT, 'SELECT COUNT(*) AS total_row_count FROM '.$table, FALSE)
+		return $this->perfrorm(Database::SELECT, 'SELECT COUNT(*) AS total_row_count FROM '.$table, FALSE)
 			->get('total_row_count');
 	}
 	
