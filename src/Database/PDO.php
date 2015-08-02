@@ -2,7 +2,7 @@
 
 namespace Door\RDB\Database;
 use Door\RDB\Database;
-use PDO;
+use PDO as PHPPDO;
 use PDOException;
 
 /**
@@ -46,18 +46,18 @@ class PDO extends Database {
 		unset($this->_config['connection']);
 
 		// Force PDO to use exceptions for all errors
-		$options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+		$options[PHPPDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 
 		if ( ! empty($persistent))
 		{
 			// Make the connection persistent
-			$options[PDO::ATTR_PERSISTENT] = TRUE;
+			$options[PHPPDO::ATTR_PERSISTENT] = TRUE;
 		}
 
 		try
 		{
 			// Create a new PDO connection
-			$this->_connection = new PDO($dsn, $username, $password, $options);
+			$this->_connection = new PHPPDO($dsn, $username, $password, $options);
 		}
 		catch (PDOException $e)
 		{
