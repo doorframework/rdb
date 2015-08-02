@@ -369,25 +369,25 @@ class Select extends Where {
 		if ( ! empty($this->_where))
 		{
 			// Add selection conditions
-			$query .= ' WHERE '.$this->_compile_conditions($db, $this->_where);
+			$query .= ' WHERE '.$this->_compile_conditions($this->_where);
 		}
 
 		if ( ! empty($this->_group_by))
 		{
 			// Add grouping
-			$query .= ' '.$this->_compile_group_by($db, $this->_group_by);
+			$query .= ' '.$this->_compile_group_by($this->_group_by);
 		}
 
 		if ( ! empty($this->_having))
 		{
 			// Add filtering conditions
-			$query .= ' HAVING '.$this->_compile_conditions($db, $this->_having);
+			$query .= ' HAVING '.$this->_compile_conditions($this->_having);
 		}
 
 		if ( ! empty($this->_order_by))
 		{
 			// Add sorting
-			$query .= ' '.$this->_compile_order_by($db, $this->_order_by);
+			$query .= ' '.$this->_compile_order_by($this->_order_by);
 		}
 
 		if ($this->_limit !== NULL)
