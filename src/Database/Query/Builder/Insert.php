@@ -131,7 +131,7 @@ class Insert extends Builder {
 	{
 
 		// Start an insertion query
-		$query = 'INSERT INTO '.$db->quote_table($this->_table);
+		$query = 'INSERT INTO '.$this->db()->quote_table($this->_table);
 
 		// Add the column names
 		$query .= ' ('.implode(', ', array_map(array($this->db(), 'quote_column'), $this->_columns)).') ';
