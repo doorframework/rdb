@@ -46,7 +46,7 @@ class PDO extends Database {
 		unset($this->_config['connection']);
 
 		// Force PDO to use exceptions for all errors
-		$options[PHPPDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+		$options[PHPPDO::ATTR_ERRMODE] = PHPPDO::ERRMODE_EXCEPTION;
 
 		if ( ! empty($persistent))
 		{
@@ -165,15 +165,15 @@ class PDO extends Database {
 			// Convert the result into an array, as PDOStatement::rowCount is not reliable
 			if ($as_object === FALSE)
 			{
-				$result->setFetchMode(PDO::FETCH_ASSOC);
+				$result->setFetchMode(PHPPDO::FETCH_ASSOC);
 			}
 			elseif (is_string($as_object))
 			{
-				$result->setFetchMode(PDO::FETCH_CLASS, $as_object, $params);
+				$result->setFetchMode(PHPPDO::FETCH_CLASS, $as_object, $params);
 			}
 			else
 			{
-				$result->setFetchMode(PDO::FETCH_CLASS, 'stdClass');
+				$result->setFetchMode(PHPPDO::FETCH_CLASS, 'stdClass');
 			}
 
 			$result = $result->fetchAll();
